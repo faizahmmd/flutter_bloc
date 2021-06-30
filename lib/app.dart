@@ -1,15 +1,19 @@
 import 'package:bloc_sample/bloc.dart';
+import 'package:bloc_sample/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'home_screen.dart';
+import 'bloc_screen.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MyBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => MyBloc()),
+        BlocProvider(create: (context) => MyCubit())
+      ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -24,7 +28,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: MyHomePage(),
+        home: MyHomePageBloc(),
       ),
     );
   }

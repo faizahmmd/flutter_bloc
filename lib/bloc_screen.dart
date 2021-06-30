@@ -1,15 +1,16 @@
 import 'package:bloc_sample/bloc.dart';
+import 'package:bloc_sample/cubit_screen.dart';
 import 'package:bloc_sample/event.dart';
 import 'package:bloc_sample/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePageBloc extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageBlocState createState() => _MyHomePageBlocState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageBlocState extends State<MyHomePageBloc> {
   @override
   Widget build(BuildContext context) {
     final _myBloc = context.read<MyBloc>();
@@ -66,6 +67,26 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 50,
               child: Center(
                 child: Text("Show Last Name"),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          GestureDetector(
+            onTap: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          MyHomePageCubit()));
+            },
+            child: Container(
+              color: Colors.greenAccent,
+              width: 200,
+              height: 50,
+              child: Center(
+                child: Text("Go to MyHomePageCubit"),
               ),
             ),
           )
