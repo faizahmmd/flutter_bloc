@@ -16,7 +16,6 @@ on:
 jobs:
   build:
     name: Build APK and Create release
-    needs: [ version ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -25,7 +24,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '2.8.1'
+          flutter-version: '1.x'
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --release --split-per-abi
